@@ -1,22 +1,23 @@
 public class HtmlStatement extends Statement {
 
     @Override
-    protected String headerString(Customer aCustomer) {
-        return "<H1>Rentals for <EM>" + aCustomer.getName() + "</EM></H1><P>\n";
+    protected String headerString(Customer customer) {
+        return "<H1>Rentals for <EM>" + customer.getName() + "</EM></H1><P>\n";
     }
 
     @Override
-    protected String eachRentalString(Rental aRental) {
-        return aRental.getMovie().getTitle() + ": " +
-               String.valueOf(aRental.getCharge()) + "<BR>\n";
+    protected String eachRentalString(Rental rental) {
+        return rental.getMovie().getTitle() + ": " +
+               rental.getCharge() + "<BR>\n";
     }
 
     @Override
-    protected String footerString(Customer aCustomer) {
-        String result = "<P>You owe <EM>" + String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" +
-                  String.valueOf(aCustomer.getTotalFrequentRenterPoints()) +
-                  "</EM> frequent renter points<P>";
-        return result;
+    protected String footerString(Customer customer) {
+        StringBuilder result = new StringBuilder();
+        result.append("<P>You owe <EM>").append(customer.getTotalCharge()).append("</EM><P>\n");
+        result.append("On this rental you earned <EM>")
+              .append(customer.getTotalFrequentRenterPoints())
+              .append("</EM> frequent renter points<P>");
+        return result.toString();
     }
 }

@@ -1,27 +1,26 @@
 public class Rental {
 
-   private Movie _movie;
-   private int _daysRented;
+    private Movie movie;
+    private int daysRented;
 
-   public Rental(Movie movie, int daysRented) {
-      _movie = movie;
-      _daysRented = daysRented;
-   }
+    public Rental(Movie movie, int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
+    }
 
-   public int getDaysRented() {
-      return _daysRented;
-   }
+    public int getDaysRented() {
+        return daysRented;
+    }
 
-   public Movie getMovie() {
-      return _movie;
-   }
+    public Movie getMovie() {
+        return movie;
+    }
 
-   public double getCharge() {
-      return _movie.getCharge(_daysRented);
-   }
+    public double getCharge() {
+        return movie.getCharge(daysRented);
+    }
 
-   // ✔ Agora delega o cálculo de pontos para Movie
-   public int getFrequentRenterPoints() {
-      return _movie.getFrequentRenterPoints(_daysRented);
-   }
+    public int getFrequentRenterPoints() {
+        return movie.getFrequentRenterPoints(daysRented);
+    }
 }

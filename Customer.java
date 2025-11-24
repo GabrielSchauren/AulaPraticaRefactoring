@@ -1,54 +1,49 @@
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
-   private String _name;
-   private Vector _rentals = new Vector();
+    private String name;
+    private List<Rental> rentals = new ArrayList<>();
 
-   public Customer(String name) {
-      _name = name;
-   }
+    public Customer(String name) {
+        this.name = name;
+    }
 
-   public void addRental(Rental arg) {
-      _rentals.addElement(arg);
-   }
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+    }
 
-   public String getName() {
-      return _name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   // ✔ Delegação para TextStatement
-   public String statement() {
-      return new TextStatement().value(this);
-   }
+    // Delegação para Statement
+    public String statement() {
+        return new TextStatement().value(this);
+    }
 
-   // ✔ Delegação para HtmlStatement
-   public String htmlStatement() {
-      return new HtmlStatement().value(this);
-   }
+    public String htmlStatement() {
+        return new HtmlStatement().value(this);
+    }
 
-   // ✔ Tornar públicos para uso pelas subclasses Statement
-   public Enumeration getRentals() {
-      return _rentals.elements();
-   }
+    // Tornar públicos para uso pelas subclasses Statement
+    public List<Rental> getRentals() {
+        return rentals;
+    }
 
-   public double getTotalCharge() {
-      double result = 0;
-      Enumeration rentals = _rentals.elements();
-      while (rentals.hasMoreElements()) {
-         Rental each = (Rental) rentals.nextElement();
-         result += each.getCharge();
-      }
-      return result;
-   }
+    public double getTotalCharge() {
+        double total = 0;
+        for (Rental rental : rentals) {
+            total += rental.getCharge();
+        }
+        return total;
+    }
 
-   public int getTotalFrequentRenterPoints() {
-      int result = 0;
-      Enumeration rentals = _rentals.elements();
-      while (rentals.hasMoreElements()) {
-         Rental each = (Rental) rentals.nextElement();
-         result += each.getFrequentRenterPoints();
-      }
-      return result;
-   }
+    public int getTotalFrequentRenterPoints() {
+        int total = 0;
+        for (Rental rental : rentals) {
+            total += rental.getFrequentRenterPoints();
+        }
+        return total;
+    }
 }
