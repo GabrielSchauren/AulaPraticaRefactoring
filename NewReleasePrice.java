@@ -4,8 +4,12 @@ public class NewReleasePrice extends Price {
       return Movie.NEW_RELEASE;
    }
 
-   // ✔ cálculo específico de novos lançamentos
    public double getCharge(int daysRented) {
       return daysRented * 3;
+   }
+
+   // ✔ comportamento especial para novos lançamentos
+   public int getFrequentRenterPoints(int daysRented) {
+      return (daysRented > 1) ? 2 : 1;
    }
 }
