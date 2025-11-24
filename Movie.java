@@ -24,7 +24,6 @@ public class Movie {
       return _title;
    }
 
-   // ✔ Novo método: cálculo de cobrança baseado em daysRented
    public double getCharge(int daysRented) {
       double result = 0;
 
@@ -47,5 +46,13 @@ public class Movie {
       }
 
       return result;
+   }
+
+   // ✔ Novo método: cálculo de pontos baseado em daysRented
+   public int getFrequentRenterPoints(int daysRented) {
+      if ((_priceCode == NEW_RELEASE) && (daysRented > 1)) {
+         return 2;
+      }
+      return 1;
    }
 }

@@ -16,16 +16,12 @@ public class Rental {
       return _movie;
    }
 
-   // ✔ Agora delega o cálculo para Movie
    public double getCharge() {
       return _movie.getCharge(_daysRented);
    }
 
+   // ✔ Agora delega o cálculo de pontos para Movie
    public int getFrequentRenterPoints() {
-      if ((_movie.getPriceCode() == Movie.NEW_RELEASE) &&
-          (_daysRented > 1)) {
-         return 2;
-      }
-      return 1;
+      return _movie.getFrequentRenterPoints(_daysRented);
    }
 }
