@@ -16,7 +16,6 @@ public class Rental {
       return _movie;
    }
 
-   // ✔ método movido e renomeado
    public double getCharge() {
       double result = 0;
 
@@ -39,5 +38,15 @@ public class Rental {
       }
 
       return result;
+   }
+
+   // ✔ Método extraído + movido para Rental
+   public int getFrequentRenterPoints() {
+      // bônus para lançamento novo alugado por mais de 1 dia
+      if ((_movie.getPriceCode() == Movie.NEW_RELEASE) &&
+          (_daysRented > 1)) {
+         return 2;
+      }
+      return 1;
    }
 }
