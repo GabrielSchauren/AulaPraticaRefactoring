@@ -36,15 +36,12 @@ public class Movie {
       }
    }
 
-   // ✔ agora delega para Price
    public double getCharge(int daysRented) {
       return _price.getCharge(daysRented);
    }
 
+   // ✔ agora delega para Price
    public int getFrequentRenterPoints(int daysRented) {
-      if ((_price.getPriceCode() == NEW_RELEASE) && (daysRented > 1)) {
-         return 2;
-      }
-      return 1;
+      return _price.getFrequentRenterPoints(daysRented);
    }
 }
